@@ -1,27 +1,22 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-content {
+  --background: #fff;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-item {
+  --background: transparent;
+  font-size: 17px;
+  --padding-start: 12px;
+  --inner-padding-end: 8px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+ion-checkbox {
+  --size: 22px;
+  --border-color: #ccc;
+  --border-radius: 50%;
+  margin-right: 12px;
 }
 
-#container a {
-  text-decoration: none;
+.completed {
+  text-decoration: line-through;
+  color: #aaa;
 }

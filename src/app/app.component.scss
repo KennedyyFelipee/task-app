@@ -1,0 +1,32 @@
+ion-menu {
+  --width: 240px;
+}
+
+.menu-header {
+
+}
+
+.menu-header {
+ 
+}
+
+.menu-header h2 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.menu-header p {
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+ion-item {
+  --border-radius: 12px;
+  margin: 6px 12px;
+}
+
+ion-item[color="danger"] {
+  --color: var(--ion-color-danger);
+}

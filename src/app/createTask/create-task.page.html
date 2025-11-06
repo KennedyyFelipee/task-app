@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Criar Tarefa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="form-container">
+    <ion-item fill="outline">
+      <ion-label position="floating">Título</ion-label>
+      <ion-input [value]="title()" (ionInput)="title.set($any($event.target).value)"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline">
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-textarea autoGrow="true" [value]="description()" (ionInput)="description.set($any($event.target).value)"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" shape="round" (click)="save()" class="save-button">Salvar Tarefa</ion-button>
+  </div>
+</ion-content>
