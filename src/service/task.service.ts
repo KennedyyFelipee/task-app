@@ -42,7 +42,7 @@ export class TaskService {
       title,
       description,
       createdAt: Date.now(),
-      userId, 
+      userId,
       completed: false
     };
 
@@ -75,7 +75,7 @@ export class TaskService {
 
     const updated = {
       ...current,
-      completed: !current['completed']
+      completed: !current.completed
     };
 
     await updateDoc(doc(db, 'tasks', id), updated);
