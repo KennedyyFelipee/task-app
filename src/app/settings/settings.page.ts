@@ -10,7 +10,14 @@ import { IonicModule, IonButtons, IonMenuButton } from '@ionic/angular';
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule]
 })
+
 export class SettingsPage implements OnInit {
   constructor() {}
   ngOnInit() {}
+
+  toggleTheme(isDark: boolean) {
+  document.body.classList.toggle('dark-theme', isDark);
+ }
+
 }
+
