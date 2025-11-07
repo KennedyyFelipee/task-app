@@ -5,33 +5,41 @@ import {
   IonContent, IonHeader, IonTitle, IonToolbar, IonItem,
   IonButtons, IonMenuButton, IonList, IonLabel, IonIcon,
   IonItemSliding, IonCheckbox, IonItemOptions, IonItemOption,
-  IonButton, AlertController
-} from '@ionic/angular/standalone';
+  IonButton, AlertController, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { TaskService } from 'src/service/task.service';
+import { JokeService } from 'src/service/joke.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  imports: [
+  imports: [IonCardContent, IonCardTitle, IonCardHeader, 
     CommonModule, FormsModule,
     IonContent, IonHeader, IonTitle, IonToolbar, IonItem,
     IonButtons, IonMenuButton, IonList, IonLabel, IonIcon,
-    IonItemSliding, IonCheckbox, IonItemOptions, IonItemOption, IonButton
+    IonItemSliding, IonCheckbox, IonItemOptions, IonItemOption, IonButton, IonCard
   ],
 })
 export class HomePage implements OnInit {
   private taskService = inject(TaskService);
   private alertCtrl = inject(AlertController);
+  private jokeService = inject(JokeService);
+
   tasks = this.taskService.tasks;
+  joke = this.jokeService.joke;
 
   ngOnInit() {
     this.taskService.loadTasks();
+    this.loadJoke();
+  }
+
+  async loadJoke() {
+    await this.jokeService.getRandomJoke();
   }
 
   toggleTask(id: string | undefined) {
-     if (!id) return;
+    if (!id) return;
     this.taskService.toggleTask(id);
   }
 
@@ -60,18 +68,8 @@ export class HomePage implements OnInit {
     const alert = await this.alertCtrl.create({
       header: 'Editar Tarefa',
       inputs: [
-        {
-          name: 'title',
-          type: 'text',
-          value: currentTitle,
-          placeholder: 'Título'
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          value: currentDescription,
-          placeholder: 'Descrição'
-        }
+        { name: 'title', type: 'text', value: currentTitle, placeholder: 'Título' },
+        { name: 'description', type: 'textarea', value: currentDescription, placeholder: 'Descrição' }
       ],
       buttons: [
         { text: 'Cancelar', role: 'cancel' },
@@ -90,7 +88,7 @@ export class HomePage implements OnInit {
   }
 
   deleteTask(id: string | undefined) {
-     if (!id) return;
+    if (!id) return;
     this.taskService.deleteTask(id);
   }
 }
